@@ -1802,4 +1802,5 @@ footer {
   .shape-selector { grid-template-columns: 1fr 1fr; }
   .calc-panel { padding: 24px 20px; }
   .contact-form-wrap { padding: 28px 20px; }
+  .spec-fields-grid { grid-template-columns: 1fr; }
 }
