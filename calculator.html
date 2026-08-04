@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Steel weight calculator by Radha Enterprise – calculate weight of round bars, flat bars, pipes, and sheets in mm dimensions for any steel grade." />
+  <title>Weight Calculator | Radha Enterprise – Steel Weight Calculator</title>
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="preloader"><div class="preloader-logo">Radha <span>Enterprise</span></div><div class="preloader-bar"></div></div>
+<a id="whatsappBtn" href="#" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-contacts">
+        <a href="tel:+919426930018"><i class="fas fa-phone-alt"></i> 9426930018</a>
+        <span style="color:rgba(255,255,255,0.5);margin-left:12px;"><i class="fas fa-map-marker-alt" style="color:var(--gold)"></i> <span data-company-address></span></span>
+      </div>
+      <div class="topbar-right">
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon"><i class="fas fa-industry"></i></div>
+        <div><div class="nav-logo-text">Radha <span>Enterprise</span></div><div class="nav-logo-sub">Steel Supplier · Rajkot</div></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a><a href="products.html">Products</a>
+        <a href="calculator.html" class="active">Calculator</a>
+        <a href="about.html">About</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get Quote</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="products.html"><i class="fas fa-boxes"></i> Products</a>
+    <a href="calculator.html"><i class="fas fa-calculator"></i> Calculator</a>
+    <a href="about.html"><i class="fas fa-building"></i> About Us</a>
+    <a href="contact.html"><i class="fas fa-address-book"></i> Contact Us</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="hero-badge" style="margin-bottom:16px;"><i class="fas fa-calculator"></i> Steel Weight Tool</div>
+    <h1>Steel Weight <span>Calculator</span></h1>
+    <p>Instantly calculate the weight of steel Bars. Enter dimensions in millimetres — results in kg and tonnes.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span>Calculator</span>
+    </div>
+  </div>
+</div>
+
+<section class="section bg-dark">
+  <div class="container">
+    <div class="calc-wrapper">
+
+      <!-- LEFT: INPUT PANEL -->
+      <div class="calc-panel animate-on-scroll">
+        <h2><i class="fas fa-calculator" style="color:var(--gold);margin-right:10px;"></i> Weight Calculator</h2>
+
+        <!-- Round Bar fields -->
+        <div id="field-dia" class="calc-field-group">
+          <div class="form-group">
+            <label>Diameter <span>(mm)</span></label>
+            <div class="input-with-unit">
+              <input type="number" id="diaInput" class="form-control calc-input" placeholder="Enter Diameter" min="0" step="0.1" />
+              <span class="input-unit">mm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Length (shared for Round Bar) -->
+        <div id="field-length" class="calc-field-group">
+          <div class="form-group">
+            <label>Length <span>(mm)</span></label>
+            <div class="input-with-unit">
+              <input type="number" id="lenInput" class="form-control calc-input" placeholder="Enter Length" min="0" step="1" />
+              <span class="input-unit">mm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Quantity <span>(number of pieces)</span></label>
+          <div class="input-with-unit">
+            <input type="number" id="qtyInput" class="form-control calc-input" placeholder="Enter Quantity" min="1" step="1" />
+            <span class="input-unit">pcs</span>
+          </div>
+        </div>
+
+        <button class="calc-btn" id="calcBtn">
+          <i class="fas fa-calculator"></i> Calculate Weight
+        </button>
+        <button class="calc-btn reset-btn" id="resetBtn">
+          <i class="fas fa-undo"></i> Reset
+        </button>
+      </div>
+
+      <!-- RIGHT: RESULT PANEL -->
+      <div class="calc-result-panel animate-on-scroll">
+        <div class="result-header">
+          <i class="fas fa-weight-hanging"></i>
+          <h3>Weight Result</h3>
+        </div>
+
+        <div class="result-empty" id="resultEmpty">
+          <i class="fas fa-calculator"></i>
+          <p>Enter dimensions and click <strong>Calculate Weight</strong> to see the result.</p>
+        </div>
+
+        <div class="result-output" id="resultOutput">
+          <div class="result-big">
+            <div class="label">Total Weight</div>
+            <div class="value"><span id="resBigVal">0.00</span> <span>kg</span></div>
+          </div>
+          <div class="result-breakdown">
+            <div class="result-row">
+              <span class="r-label"><i class="fas fa-box" style="margin-right:6px;color:var(--primary-light);"></i> Weight per Piece</span>
+              <span class="r-value" id="resPerPc">—</span>
+            </div>
+            <div class="result-row">
+              <span class="r-label"><i class="fas fa-weight" style="margin-right:6px;color:var(--primary-light);"></i> Total in Tonnes</span>
+              <span class="r-value gold" id="resTonnes">—</span>
+            </div>
+            <div class="result-row">
+              <span class="r-label"><i class="fas fa-hashtag" style="margin-right:6px;color:var(--primary-light);"></i> Quantity</span>
+              <span class="r-value" id="resQty">—</span>
+            </div>
+            <div class="result-row">
+              <span class="r-label"><i class="fas fa-atom" style="margin-right:6px;color:var(--primary-light);"></i> Density Used</span>
+              <span class="r-value" id="resDensity">—</span>
+            </div>
+          </div>
+          <div class="formula-note">
+            <strong><i class="fas fa-info-circle"></i> Formula Used</strong>
+            Weight (kg) = Volume (mm³) ÷ 1,000 × Density (g/cm³) ÷ 1,000<br/>
+            Results are approximate. Actual weight may vary ±2% based on tolerance.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section-sm" style="background:linear-gradient(135deg,var(--primary-dark),var(--dark-3));">
+  <div class="container" style="text-align:center;">
+    <h2 style="margin-bottom:12px;">Need Custom Cut Lengths?</h2>
+    <p style="color:var(--text-light);margin-bottom:24px;">We supply steel in custom lengths and quantities. Contact us for bulk pricing.</p>
+    <a href="contact.html" class="btn btn-gold"><i class="fas fa-address-book"></i> Contact Us</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand-text">Radha <span>Enterprise</span></div>
+        <div class="footer-tagline">Your Trusted Steel Partner</div>
+        <p class="footer-desc">Stainless steel supplier in Rajkot, Gujarat since 2004.</p>
+        
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+          <li><a href="calculator.html"><i class="fas fa-chevron-right"></i> Calculator</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col"><h4>Steel Grades</h4>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-chevron-right"></i> SS 304 / 304L</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> SS 316 / 316L</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> SS 410</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> SS 420</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> SS 431</a></li>
+        </ul>
+      </div>
+      <div class="footer-col"><h4>Contact Us</h4>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span data-company-address>1-Samrat Industrial Area, B/H S.T. Workshop, Rajkot</span></li>
+          <li class="footer-contact-item"><i class="fas fa-phone-alt"></i><span><a href="tel:+919426930018">Samir Bhai - 9426930018</a><br/><a href="tel:+919664824488">Riju Bhai - 9664824488</a></span></li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 <strong>Radha Enterprise</strong>. All Rights Reserved.</p>
+      <p>1-Samrat Industrial Area, B/H S.T. Workshop, Rajkot</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js">
+</script>
+<script>
+// Extra calculator logic for Sheet (field mapping differs)
+document.addEventListener('DOMContentLoaded', () => {
+  const shapeMap = {
+    roundbar: ['field-dia', 'field-length'],
+    flatbar:  ['field-width', 'field-thickness', 'field-length'],
+    pipe:     ['field-od', 'field-wt', 'field-length'],
+    sheet:    ['field-sheet-width', 'field-height', 'field-sheet-thick'],
+  };
+  document.querySelectorAll('.shape-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const shape = btn.dataset.shape;
+      document.querySelectorAll('.calc-field-group').forEach(g => g.style.display = 'none');
+      (shapeMap[shape] || []).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = '';
+      });
+    });
+  });
+  // Init
+  document.querySelectorAll('.calc-field-group').forEach(g => g.style.display = 'none');
+  shapeMap['roundbar'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = ''; });
+});
+</script>
+</body>
+</html>
