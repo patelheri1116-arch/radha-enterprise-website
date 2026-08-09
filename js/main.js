@@ -74,6 +74,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ── SCROLL DOWN HINT ──────────────────────────────────────
+  const scrollHint = document.getElementById('scrollDownHint');
+  if (scrollHint) {
+    // Click to scroll to first section below the page hero
+    scrollHint.addEventListener('click', () => {
+      const pageHero = document.querySelector('.page-hero');
+      if (pageHero) {
+        const nextEl = pageHero.nextElementSibling;
+        if (nextEl) {
+          nextEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+
+    // Auto-hide the hint once user scrolls past the page hero
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        scrollHint.style.opacity = entry.isIntersecting ? '1' : '0';
+        scrollHint.style.pointerEvents = entry.isIntersecting ? 'auto' : 'none';
+      });
+    }, { threshold: 0.1 });
+
+    const pageHero = document.querySelector('.page-hero');
+    if (pageHero) observer.observe(pageHero);
+  }
+
   // ── HERO PARTICLES ────────────────────────────────────────
   const particleContainer = document.getElementById('particles');
   if (particleContainer) {
