@@ -20,22 +20,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── HAMBURGER MENU ────────────────────────────────────────
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-      const spans = hamburger.querySelectorAll('span');
-      if (mobileNav.classList.contains('open')) {
-        spans[0].style.transform = 'translateY(7px) rotate(45deg)';
-        spans[1].style.opacity  = '0';
-        spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
-      } else {
-        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-      }
-    });
+  // ── HAMBURGER / MOBILE NAV DRAWER ────────────────────────────
+  const hamburger      = document.getElementById('hamburger');
+  const mobileNav      = document.getElementById('mobileNav');
+  const mobileOverlay  = document.getElementById('mobileNavOverlay');
+  const mobileNavClose = document.getElementById('mobileNavClose');
+
+  function openMobileNav() {
+    if (!mobileNav) return;
+    mobileNav.classList.add('open');
+    if (mobileOverlay) {
+      mobileOverlay.style.display = 'block';
+      requestAnimationFrame(() => mobileOverlay.classList.add('visible'));
+    }
+    if (hamburger) hamburger.classList.add('is-open');
+    document.body.classList.add('nav-open');
   }
+
+  function closeMobileNav() {
+    if (!mobileNav) return;
+    mobileNav.classList.remove('open');
+    if (mobileOverlay) {
+      mobileOverlay.classList.remove('visible');
+      setTimeout(() => { mobileOverlay.style.display = 'none'; }, 300);
+    }
+    if (hamburger) hamburger.classList.remove('is-open');
+    document.body.classList.remove('nav-open');
+  }
+
+  hamburger?.addEventListener('click', () => {
+    mobileNav?.classList.contains('open') ? closeMobileNav() : openMobileNav();
+  });
+
+  mobileNavClose?.addEventListener('click', closeMobileNav);
+  mobileOverlay?.addEventListener('click', closeMobileNav);
+
+  // Close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav?.classList.contains('open')) closeMobileNav();
+  });
+
+  // Close on nav link click (navigating to a page)
+  document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
 
   // ── ACTIVE NAV LINK ───────────────────────────────────────
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
