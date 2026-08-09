@@ -128,6 +128,19 @@ input, select, textarea { outline: none; font-family: 'Inter', sans-serif; }
   box-shadow: 0 8px 30px rgba(13,110,110,0.5);
 }
 
+.btn-white {
+  background: var(--white);
+  color: var(--dark);
+  border: 1.5px solid rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.btn-white:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  border-color: var(--primary-light);
+}
+
 .btn-gold {
   background: linear-gradient(135deg, var(--gold), var(--gold-light));
   color: var(--dark);
