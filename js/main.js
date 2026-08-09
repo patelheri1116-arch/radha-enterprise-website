@@ -174,6 +174,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── ABOUT PAGE ORDER NOW CONTACTS ───────────────────────
+  const orderNowBtn = document.getElementById('orderNowBtn');
+  const orderContacts = document.getElementById('orderContacts');
+  if (orderNowBtn && orderContacts) {
+    orderNowBtn.addEventListener('click', () => {
+      if (orderContacts.style.display === 'flex') return;
+      orderContacts.style.display = 'flex';
+    });
+  }
+
   // ── CHEMISTRY FILTER ─────────────────────
   const chemFilter = document.getElementById('gradeFilter');
   const gradeCards = document.querySelectorAll('.grade-card');
