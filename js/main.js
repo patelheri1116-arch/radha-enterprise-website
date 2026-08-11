@@ -707,4 +707,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── PREVENT IMAGE DRAG & SELECTION ────────────────────────
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
+
 });
