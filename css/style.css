@@ -1429,6 +1429,7 @@ select.form-control option { background: var(--dark-2); }
   width: 100%;
   height: auto;
   object-fit: contain;
+  border-radius: 16px;
 }
 .about-img-blank {
   min-height: 300px;
