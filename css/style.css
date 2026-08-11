@@ -310,16 +310,12 @@ input, select, textarea { outline: none; font-family: 'Inter', sans-serif; }
   font-weight: 500;
   text-transform: uppercase;
 }
-.nav-logo-icon {
-  width: 42px;
-  height: 42px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: var(--white);
+.nav-logo-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 .nav-links {
   display: flex;
